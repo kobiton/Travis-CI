@@ -3,8 +3,11 @@ This part will demonstrate how to get session information with Kobiton rest api.
 >Kobiton supports multiple languages for [API documentation](https://api.kobiton.com/docs). Go to docs for further language support
 
 ## Table of contents
-1. [Run Kobiton Automation test with Travis CI](!1-run-kobiton-test.md)
-2. [Get Kobiton session information throught REST API](2-get-session-info.md)
+  - [Prerequisites](#prerequisites)
+  - [1. Authentication](#1-authentication)
+  - [2. Get session information through Kobiton REST API](#2-get-session-information-through-kobiton-rest-api)
+  - [3. Final result](#3-final-result)  
+
 
 ## Prerequisites
   - Kobiton account.
@@ -24,11 +27,11 @@ This part will demonstrate how to get session information with Kobiton rest api.
   -H 'Accept: application/json'
   ```
 
-* Get Application Infomation  
+* Get Application Information  
 `GET https://api.kobiton.com/v1/apps/{application_ID}`  
 You can get your application ID in your desiredCaps.
 
-* Get Session Infomation  
+* Get Session Information  
   `GET https://api.kobiton.com/v1/session/{sessionID}`
 
   Sample response (if successful):

@@ -13,4 +13,4 @@ Kobiton is a mobile cloud platform that enables users to perform manual or autom
 --------
 # Content
 1. This guide will demonstrate [how to run Kobiton automation test on Travis CI.](1-run-kobiton-test.md)  
-2. This guide will demonstrate [how to get session information through Kobito REST API](2-get-session-info.md)
+2. This guide will demonstrate [how to get session information through Kobiton REST API](2-get-session-info.md)

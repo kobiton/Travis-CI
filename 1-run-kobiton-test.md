@@ -1,9 +1,12 @@
 # Run Kobiton Automation Test on Travis CI
 This guide will demonstrate how to run your Kobiton test on Travis CI and how to secure your secret environment variables
 
-## Table of contents
-1. [Run Kobiton Automation test with Travis CI](!1-run-kobiton-test.md)
-2. [Get Kobiton session information throught REST API](2-get-session-info.md)
+## Table of contents 
+  - [Prerequisites](#prerequisites)
+  - [1. Prepare Kobiton configuration for executing automation testing](#1-prepare-kobiton-configuration-for-executing-automation-testing)
+  - [2. Configure environment variables in your .travis.yml file](#2-configure-environment-variables-in-your-travisyml-file)
+  - [3. Write the automation test script](#3-write-the-automation-test-script)
+  - [4. (Optional) Use cache to improve building speed](#4-optional-use-cache-to-improve-building-speed)
 
 ## Prerequisites
   - Github account.
@@ -109,3 +112,6 @@ cache:
 - Caches will be saved at the end of your build.
   
 ![](assets/2_travis_cache.jpg)
+
+-------
+You can now run automation tests with Kobiton from Travis!

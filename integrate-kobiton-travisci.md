@@ -87,7 +87,7 @@ In order to run automation test on Kobiton devices, you will need to provide 3 v
 
 ## 3. Adding required enviroment variables to Travis CI
 
-As variables such as `API Key` and `Hockey App Token` are sensitive, one must secure these elements with Travis CI to use in our script.
+Because variables such as `API Key` and `Hockey App Token` are sensitive, we must secure these elements with Travis CI to use in our script.
 1. Go to your Travis CI project.
 2. Click on **"More options"** and select **"Settings"**
    
@@ -120,9 +120,9 @@ Here are the variables we need. For the sake of this guideline, please set the n
 
 ## 4. Configuring to test latest app version on Kobiton devices
 
-First of all, we need to get the download URL of your app so Kobiton can install and run it.
+This section will guide you to fetch the latest version of your app on Hockey App and execute automation test on Kobiton devices with it.
 
-The main steps of this session:
+The main steps of this section:
 1. Use Hockey App API to get the latest app version and its download URL.
 2. Setting desired capabilities
 3. Adding test script execution command
@@ -158,6 +158,7 @@ We will use Kobiton’s desired capabilities settings to configure your test scr
 Open automation test script file or create a new one.
 
 Replace `desiredCaps` in your script with ones you got from the previous step like the template below.
+Notice the `app` element will be the value of `RESIGNED_URL` which is the download URL of your app.
 
 ```javascript
 var desiredCaps = {

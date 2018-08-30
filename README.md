@@ -19,8 +19,8 @@ Using Travis CI, we can automatically deploy app and run app automation test on 
 1. Pushes commit to GitHub repository to start releasing a new build.
 ### Travis CI 
 2. Fetches the latest commit.
-3. Archive app package and creates installation file (`.apk`, `.ipa`)
-4. Uploads app file to Hockey App
+3. Starts the application building process and creates installation file/package (`.apk` for Android, `.ipa` for iOS)
+4. Uploads created installation file/package to Hockey App.
 5. Fetches app download URL using Hockey App REST API.
 6. Execute automation test on Kobiton.
 ### Kobiton

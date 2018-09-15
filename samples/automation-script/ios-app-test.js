@@ -5,6 +5,8 @@ import {assert} from 'chai'
 
 const username = process.env.KOBITON_USERNAME
 const apiKey = process.env.KOBITON_API_KEY
+const platformVersion = process.env.KOBITON_DEVICE_PLATFORM_VERSION
+const deviceName = process.env.KOBITON_DEVICE_PLATFORM_VERSION || 'iPhone*'
 
 const kobitonServerConfig = {
   protocol: 'https',
@@ -14,13 +16,12 @@ const kobitonServerConfig = {
 
 const desiredCaps = {
   sessionName:        'Automation test session',
-  sessionDescription: 'This is an example for iOS app', 
+  sessionDescription: 'Demo Automation Test on iOS', 
   deviceOrientation:  'portrait',  
   captureScreenshots: true, 
   app:                'https://s3-ap-southeast-1.amazonaws.com/kobiton-devvn/apps-test/UIKitCatalog-Test-Adhoc.ipa', 
   deviceGroup:        'KOBITON', 
-  deviceName:         'iPhone 8 Plus',
-  platformVersion:    '11.0',
+  deviceName:         deviceName,
   platformName:       'iOS' 
 }
 

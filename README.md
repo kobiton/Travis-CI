@@ -29,23 +29,23 @@ Follow instructions at `IV. Configure Test Scripts for Kobiton` section on [our 
 
 We have provided a sample for automation test with Travis CI configuration file in this repository.
 
-The sample includes:
-- Basic configuration for Travis CI (`.travis.yml`)
-- Simple automation test script written in NodeJs. (`samples/automation-script` folder)
+In this repository, we have already provided samples for executing automation test in Kobiton:
 
-> After this guideline, you can make your own adjustment to meet your requirements.
+- Script for executing automation test on Kobiton iOS devices (`/samples/automation-test/ios-app-test.js`).
+- Script for executing automation test on Kobiton Android devices (`/samples/automation-test/android-app-test.js`).
+- TravisCI configuration file (`/.travis.yml`).
+
+> Note: After this guideline, you can make your own adjustment to meet your requirements.
 
 To use the provided sample, follow these steps:
 
-1. Fork this repository https://github.com/kobiton/Travis-HockeyApp-Appium-ReactNative/tree/master
+1. Fork this repository https://github.com/kobiton/Travis-HockeyApp-Appium-ReactNative/tree/masters
 2. Synchronize the forked repository with Travis CI. Visit [Travis CI document](https://docs.travis-ci.com/user/legacy-services-to-github-apps-migration-guide/#how-to-migrate-a-private-repository-to-github-apps) for detailed instruction.
 3. Clone the forked repository.
 
-The initial build on Travis CI will fail as we haven't done any configuration. Please follow instructions in the next parts to configure for automation testing.
+> Note: The initial build process on Travis CI will be failed to execuse as we haven't done any configuration. Please follow instructions in the next parts to configure for automation testing.
 
 ## B. Setup
-
-This part will guide you how to set your Kobiton username and API key as environment variables and apply Kobiton device's desired capabilities to your automation test script. After that, we will configure Travis CI to execute the test on your preferred platform (Android/ iOS)
 
 ## 1. Setting environment variables
 
@@ -65,46 +65,57 @@ This part will guide you how to set your Kobiton username and API key as environ
 
 ## 2. Getting desired capabilities
 
-  The desired capabilities need to be added to the automation test script in order for tests to be executed on the Kobiton device.
+  Kobiton has already provided two sample applications for testing on Android and iOS:
+
+- Android: `ApiDemos-debug`
+
+> Application URL: https://appium.github.io/appium/assets/ApiDemos-debug.apk
+
+- iOS: `UIKitCatalog-Test-Adhoc`
+
+> Application URL: https://s3-ap-southeast-1.amazonaws.com/kobiton-devvn/apps-test/UIKitCatalog-Test-Adhoc.ipa
+
+In the provided sample automation test scripts, we have pre-configured them to execute the provided sample application(s) on one of the available device(s) that has the name `Galaxy` for Android and `iPhone` for iOS. If you want to use other specific device(s), follow the instruction below to get the corresponding desired capabilities for that device(s).
+
+**How to get desired capabilities**
+
+  In this tutorial, we will be showing how to get desired capabilities for executing automation test of provided sample application `ApiDemos-debug` on `Pixel 2 XL` running `Android 8.1.0`.
 
   Go to https://portal.kobiton.com and login to your Kobiton account.
+  
   1. In the top navigation bar, select **"Devices"**.
   
-  ![](docs/assets/1_device_bar.jpg)
+  ![](docs/assets/device_bar.jpg)
 
-  2. Pick an Android or iOs device if you want to execute tests on Android/ iOS apps. Hover over the chosen device and click on the Automation settings button (the gear symbol).
+  2. Hover over the device you want to run your test script on. Click on the Automation settings button (the gear symbol).
   
-  ![](docs/assets/2_get_device.jpg)
+  ![](docs/assets/get_device.jpg)
 
-  1. In the popup window, you can choose the language of your test scripts and application type. The desired capabilities code will be generated in the right panel.
+  3. In the "**Automation Settings**" popup:
 
-  In the provided sample scripts, we will be testing:
-  - `ApiDemo-debug` app on `Pixel 2 XL 8.1.0` for Android.
-    > Application URL: `https://appium.github.io/appium/assets/ApiDemos-debug.apk`
+  - In `Language` section, choose `NodeJS`.
 
-  - `UIKitCatalog-Test-Adhoc` app on `iPhone 8 Plus 11.0` for iOS.
-  
-    > Application URL: `https://s3-ap-southeast-1.amazonaws.com/kobiton-devvn/apps-test/UIKitCatalog-Test-Adhoc.ipa`
+  - In `App Type` section, choose `Hybrid/Native from Url`.
 
-  In this guideline, we will choose **"NodeJS"** for *Language* and **"Hybrid/ Native from Url"** for *App type*. Paste the url we provided above in **"Application Url"**.
+  - In `Application Url` field, replace it with the mentioned URL of `ApiDemos-debug` application.
 
   Copy the code on the right (marked **red**) to prepare for the next step.
 
   ![](docs/assets/desiredcaps_android.jpg)
 
-  ![](docs/assets/desiredcaps_ios.jpg)
-
 ## 3. Configuring automation test script
   
-  Navigate to `automation-script` folder.
+  In `samples/automation-test` folder, we have provided two sample scripts for executing automation test on Kobiton iOS and Android devices.
 
-  If you picked an Android devices in the previous step, open `android-app-test.js`. Otherwise, open `ios-app-test.js` for iOS devices.
+  As mentioned above, the desired capabilities in provided automation test scripts have already been pre-configured. If you have chosen custom desired capabilities, please follow steps below to apply the collected desired capabilities.
 
-  Replace the `desiredCaps` in your script with the one you got from the previous step.
+  **Setting desired capabilities**
 
-  Desired capabilities for executing mentioned sample application above:
+  1. Open `android-app-test.js` if your desired capabilities is applicable for Android or `ios-app-test.js` if for iOS.
 
-  For Android device (`android-app-test.js`):
+  2. Replace `desiredCaps` value with the one taken above.
+
+  Example of desired capabilities for executing `ApiDemos-debug` application on `Pixel 2 XL` running `Android 8.1.0`:
 
   ```javascript
   const desiredCaps = {
@@ -120,22 +131,6 @@ This part will guide you how to set your Kobiton username and API key as environ
   }
   ```
 
-  For iOS device (`ios-app-test.js`):
-
-  ```javascript
-  const desiredCaps = {
-    sessionName:        'Automation test session',
-    sessionDescription: 'This is an example for iOS app', 
-    deviceOrientation:  'portrait',  
-    captureScreenshots: true, 
-    app:                'https://s3-ap-southeast-1.amazonaws.com/kobiton-devvn/apps-test/UIKitCatalog-Test-Adhoc.ipa', 
-    deviceGroup:        'KOBITON', 
-    deviceName:         'iPhone 8 Plus',
-    platformVersion:    '11.0',
-    platformName:       'iOS' 
-  }
-  ```
-
   > Parameters description: https://docs.kobiton.com/automation-testing/desired-capabilities-usage/
 
 >For more information on how to run automation test on Kobiton, visit:
@@ -146,19 +141,19 @@ This part will guide you how to set your Kobiton username and API key as environ
 
   Open `.travis.yml`.
 
-  As automation testing script is written in NodeJS, we need to install NodeJS in Travis CI execution environment (`language: node_js`). We will also be using Travis CI to use the latest Node version for this build (`node_js: "node"`).
+  As the sample automation testing script is written in NodeJS, we need to install NodeJS in Travis CI execution environment (`language: node_js`). We will also be using Travis CI to use the latest Node version for this build (`node_js: "node"`).
 
   ```yml
   language: node_js
   node_js: "node"
 
-  before_install: cd ./sample
+  before_install: cd ./samples/automation-script
   install: npm install
 
   script: npm run <TEST_SCRIPT>
   ```
 
-  Replace `<TEST_SCRIPT>` with `android-app-test` or `ios-app-test` depending on your desired platform.
+  Replace `<TEST_SCRIPT>` with `android-app-test` or `ios-app-test` depending on which platform you want to test on.
 
   For executing tests on Android:
 
@@ -176,19 +171,19 @@ This part will guide you how to set your Kobiton username and API key as environ
 
 ## 1. Run automation script on Kobiton devices
 
-Push your modified test scripts and `.travis.yml` to your GitHub repository.
+Push your modified test scripts and `.travis.yml` to your GitHub repository. TravisCI will then start the build process.
 
 The environment variables for running automation test will be shown in build log. The encrypted API key will be showed as `[secured]`.
 
-![](docs/assets/2_travis_env.jpg)  
+![](docs/assets/travis_build_env.jpg)  
 
 Travis CI will install the neccessary dependencies and then run the test on Kobiton.
 
-![](docs/assets/1_build_complete.jpg)
+![](docs/assets/build_complete.jpg)
 
 By now your test session is created. Go to https://portal.kobiton.con/sessions to check your testing session status.
 
-![](docs/assets/2_kobiton_result.jpg)
+![](docs/assets/kobiton_result.jpg)
 
 ## 2. Fetch session data through REST API
 Kobiton already provides a NodeJs sample on how to get session information using Kobiton REST API.
@@ -198,11 +193,13 @@ Go to https://github.com/kobiton/samples/tree/master/kobiton-rest-api and follow
 ## D. Feedback
 
 If you have any issue, you can contact Kobiton for more support.
+
 1. Go to https://portal.kobiton.com
+
 2. In the navigation bar at the top of the page, click on `Support`.
    
-![](docs/assets/3_kobiton_support.jpg)
+![](docs/assets/kobiton_support.jpg)
 
 3. Fill in the information for your request and submit your ticket. 
   
-![](docs/assets/3_kobiton_submit_ticket.jpg) 
+![](docs/assets/kobiton_submit_ticket.jpg) 

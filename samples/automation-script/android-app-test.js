@@ -5,6 +5,7 @@ import {assert} from 'chai'
 
 const username = process.env.KOBITON_USERNAME
 const apiKey = process.env.KOBITON_API_KEY
+const deviceName = process.env.KOBITON_DEVICE_PLATFORM_VERSION || 'Galaxy*'
 
 const kobitonServerConfig = {
   protocol: 'https',
@@ -14,13 +15,12 @@ const kobitonServerConfig = {
 
 const desiredCaps = {
   sessionName:        'Automation test session',
-  sessionDescription: 'This is an example for Android app', 
+  sessionDescription: 'Demo Automation Test on Android', 
   deviceOrientation:  'portrait',  
   captureScreenshots: true, 
   app:                'https://appium.github.io/appium/assets/ApiDemos-debug.apk', 
   deviceGroup:        'KOBITON', 
-  deviceName:         'Pixel 2 XL',
-  platformVersion:    '8.1.0',
+  deviceName:         deviceName,
   platformName:       'Android' 
 }
 

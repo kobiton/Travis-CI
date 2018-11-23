@@ -1,6 +1,6 @@
 # Integrating Kobiton into TravisCI mobile application development pipeline
 ## Table of contents
-- [A. Integrating Kobiton with TravisCI](#a-integrating-kobiton-with-TravisCI)
+- [A. Integrating Kobiton with TravisCI](#a-integrating-kobiton-with-travisci)
     - [1. Preparation](#1-preparation)
         - [1.1 Getting Kobiton Username and API key](#11-getting-kobiton-username-and-api-key)
         - [1.2 Samples](#12-samples)
@@ -8,7 +8,7 @@
         - [2.1. Getting started](#21-getting-started)
         - [2.2. Setting Kobiton Username and API Key](#22-setting-kobiton-username-and-api-key)
         - [2.3. Setting Kobiton device desired capabilities](#23-setting-kobiton-device-desired-capabilities)
-        - [2.4. TravisCI configuration file](#24-TravisCI-configuration-file)
+        - [2.4. TravisCI configuration file](#24-travisci-configuration-file)
     - [3. Automation Test Execution](#3-automation-test-execution)
 - [B. Test session details](#b-test-session-details)
     - [1. Viewing test session details on Kobiton website](#1-viewing-test-session-details-on-kobiton-website)
@@ -27,7 +27,7 @@ To get your Kobiton Username and API Key, follow instructions at `IV. Configure 
 #### 1.2. Samples
 To give you an in-depth demonstration of the integration flow, we have provided samples:
 - Script (written in NodeJS) for executing automation test on Kobiton devices : [automation-test-script.js](/samples/automation-test/automation-test-script.js).
-- TravisCI configuration file : [config.yml](/.travis.yml).
+- TravisCI configuration file : [.travis.yml](/.travis.yml).
 
 You can check out the sample content or keep reading because they are used in below steps as well.
 
@@ -79,7 +79,7 @@ If you want to execute on a specific device, refer to instructions below to get 
 
 ![Example Android DesiredCaps](./assets/desired-caps-example-android.png)
 
-5. From the collected desired capabilities, add these environment variables with corresponding values to your project configuration in CircleCI as shown in the table below
+5. From the collected desired capabilities, add these environment variables with corresponding values to your project configuration in TravisCI as shown in the table below
 
 | TravisCI Environment Variable       | Desired Capabilities Variable  | Description                                         | Default Value                                             |
 |-------------------------------------|--------------------------------|-----------------------------------------------------|-----------------------------------------------------------|
@@ -116,7 +116,7 @@ The environment variables representing above desired capabilities should look li
 > More information about Desired Capabilities and its parameters can be found in https://docs.kobiton.com/automation-testing/desired-capabilities-usage/
 
 #### 2.4. TravisCI configuration file
-The provided TravisCI configuration file that will be used looks like this:
+TravisCI can run on this repository since we have already provided a simple configuration file at [.travis.yml](/.travis.yml). Below is the brief explanation of the provided configuration file, you can skip this section if you're familiar with TravisCI.
 
 ```yaml
 language: node_js
@@ -127,8 +127,6 @@ install: npm install
 
 script: npm run automation-test-script
 ```
-
-Below is in-depth explanation of the provided configuration file:
 
 - Here we use TravisCI official latest NodeJS Docker image as the execution environment
 

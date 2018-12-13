@@ -185,7 +185,7 @@ Your test session can be viewed on Kobiton website. Follow these steps below
 
 Kobiton has already provided samples written in NodeJS to get session information, commands using Kobiton REST API.
 
-Refer to [Kobiton sample for REST API](https://github.com/kobiton/samples/tree/master/kobiton-rest-api) for instructions.
+Refer to [Kobiton sample for REST API](https://github.com/kobiton/samples/tree/master/kobiton-rest-api/get-session-data-and-commands) for instructions.
 
 ## C. Feedback
 

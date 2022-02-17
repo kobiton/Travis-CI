@@ -1,7 +1,22 @@
-language: node_js
-node_js: "node"
+# Comment out this part if you want to use the automation-test execution by nodejs
+# language: node_js
+# node_js: 'node'
+# before_install: cd ./samples/automation-test-nodejs
+# install: npm install
+# script: npm run automation-test-script
 
-before_install: cd ./samples/automation-test
-install: npm install
+# Comment out this part if you want to use the test execution by a packaged app (written in Go) with more custom environment variables
+# language: bash
+# sudo: required
+# script:
+#   - cd ./samples/execute-test
+#   - chmod u+x test.sh
+#   - ./test.sh
 
-script: npm run automation-test-script
+# Comment out this part if you want to use the upload app to Kobiton Repo service
+# language: bash
+# sudo: required
+# script:
+#   - cd ./samples/upload-app
+#   - chmod u+x upload.sh
+#   - ./upload.sh

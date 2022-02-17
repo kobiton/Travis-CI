@@ -1,0 +1,28 @@
+{
+  "name": "kobiton-sample",
+  "version": "1.0.0",
+  "description": "Sample test to integrate with Travis CI",
+  "scripts": {
+    "automation-test-script": "mocha --require babel-core/register --no-timeouts automation-test-script.js"
+  },
+  "author": "Kobiton Inc.",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "bluebird": "^3.5.1",
+    "chai": "^4.1.2",
+    "colors": "^1.1.2",
+    "mocha": "^5.2.0",
+    "mocha.parallel": "^0.15.5",
+    "npm": "^6.1.0",
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "wd": "^1.9.0"
+  }
+}
